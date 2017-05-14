@@ -1,6 +1,6 @@
 {
   "name": "@lassehaslev/executor",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Watch for file changes and then execute command",
   "main": "index.js",
   "scripts": {
