@@ -34,10 +34,8 @@ package.json
 ```
 Now you can run the command ```npm run executor``` from command line.
 
-Path if you run per project and not in a npm script
-```bash
-./node_modules/.bin/executor
-```
+*If you run per project and not in a npm script the command is ```./node_modules/.bin/executor```.*
+
 
 ## Development
 ```bash
