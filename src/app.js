@@ -1,19 +1,52 @@
 #!/usr/bin/env node
 
+import argumentor from 'command-line-args';
 import chokidar from 'chokidar';
-// console.log(fs);
-// import args from 'command-line-args';
+import shelljs from 'shelljs';
 
-console.log('Hello world');
-
-console.log(process.cwd());
-
-var watcher = chokidar.watch('**/*.js', {
-  ignored: /(^|[\/\\])\../,
+var options = argumentor( [
+    {
+        name: 'command',
+        type: String,
+        defaultOption: true 
+    },
+    {
+        name: 'run-on-first',
+        type: Boolean,
+        defaultValue: true,
+    },
+    {
+        name: 'ignore',
+        type: String,
+        multiple: true,
+        defaultValue: /(^|[\/\\])\../,
+    },
+    {
+        name: 'watch',
+        type: String,
+        defaultValue: '**/*',
+    },
+] );
+var watcher = chokidar.watch(options.watch, {
+  ignored: options.ignore,
   persistent: true
 });
 
+var runCommand = function( triggered ) {
+    if (options.command) {
+        var triggeredString = triggered ? 'Triggered by "' + triggered + '".' : '';
+        console.log( 'Running. "' + options.command + '". ' + triggeredString );
+        shelljs.exec( options.command );
+    }
+    else {
+        console.log('No command provided');
+    }
+}
+
+if (options['run-on-first']) {
+    runCommand();
+}
+
 watcher.on( 'change', function( path, stats ) {
-    console.log(path);
-    console.log(path);
+    runCommand( path );
 } )
