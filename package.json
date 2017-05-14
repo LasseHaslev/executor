@@ -31,11 +31,11 @@
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
-    "babel-preset-env": "^1.4.0",
-    "chokidar": "^1.7.0",
-    "command-line-args": "^4.0.4"
+    "babel-preset-env": "^1.4.0"
   },
   "dependencies": {
-    "shelljs": "^0.7.7"
+    "command-line-args": "^4.0.4",
+    "shelljs": "^0.7.7",
+    "chokidar": "^1.7.0"
   }
 }
