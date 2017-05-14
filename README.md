@@ -13,10 +13,14 @@ npm install @lassehaslev/executor --save-dev
 ## Usage
 ### Command line
 ```bash
+# Doc
 executor "<command>"
     [--run-on-first=true]
     [--watch="**/*"]
     [--ignore=""]
+
+#example
+executor './vendor/bin/phpunit' --watch='**/*.php' --ignore='node_modules/' --ignore='vendor/'
 ```
 
 ### Npm
