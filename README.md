@@ -36,6 +36,15 @@ Now you can run the command ```npm run executor``` from command line.
 
 *If you run per project and not in a npm script the command is ```./node_modules/.bin/executor```.*
 
+## Contributing
+Follow these steps to contribute to project.
+
+ 1. **Fork** the repo on GitHub
+ 2. **Clone** the project to your own machine
+ 3. **Commit** changes to your own branch
+ 4. **Push** your work back up to your fork
+ 5. Submit a **Pull request** so that we can review your changes
+
 
 ## Development
 ```bash
