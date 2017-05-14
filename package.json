@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/lassehaslev/executor/issues"
   },
-  "homepage": "https://github.com/lassehaslev/executor#readme"
+  "homepage": "https://github.com/lassehaslev/executor#readme",
+  "bin": {
+    "watchecute": "src/app.js"
+  }
 }
