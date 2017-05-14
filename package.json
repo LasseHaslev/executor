@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/lassehaslev/executor#readme",
   "bin": {
-    "watchecute": "dist/app.js"
+    "executor": "dist/app.js"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",

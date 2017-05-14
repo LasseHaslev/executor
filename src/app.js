@@ -32,15 +32,17 @@ var watcher = chokidar.watch(options.watch, {
   persistent: true
 });
 
+// Stop if no command is set
+if (!options.command) {
+    console.log('Cannot watch and run command:');
+    console.log('No command provided');
+    process.exit();
+};
+
 var runCommand = function( triggered ) {
-    if (options.command) {
-        var triggeredString = triggered ? 'Triggered by "' + triggered + '".' : '';
-        console.log( 'Running. "' + options.command + '". ' + triggeredString );
-        shelljs.exec( options.command );
-    }
-    else {
-        console.log('No command provided');
-    }
+    var triggeredString = triggered ? 'Triggered by "' + triggered + '".' : '';
+    console.log( 'Running command "' + options.command + '". ' + triggeredString );
+    shelljs.exec( options.command );
 }
 
 if (options['run-on-first']) {
