@@ -1,0 +1,26 @@
+{
+  "name": "@lassehaslev/executor",
+  "version": "0.0.1",
+  "description": "Watch for file changes and then execute command",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lassehaslev/executor.git"
+  },
+  "keywords": [
+    "watch",
+    "execute",
+    "command",
+    "files",
+    "changes"
+  ],
+  "author": "Lasse S. Haslev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lassehaslev/executor/issues"
+  },
+  "homepage": "https://github.com/lassehaslev/executor#readme"
+}
