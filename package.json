@@ -4,7 +4,10 @@
   "description": "Watch for file changes and then execute command",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "babel src -d dist",
+    "dev": "babel src -d dist --watch",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -24,6 +27,10 @@
   },
   "homepage": "https://github.com/lassehaslev/executor#readme",
   "bin": {
-    "watchecute": "src/app.js"
+    "watchecute": "dist/app.js"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.4.0"
   }
 }
