@@ -29,7 +29,8 @@ var options = argumentor( [
 ] );
 var watcher = chokidar.watch(options.watch, {
   ignored: options.ignore,
-  persistent: true
+  persistent: true,
+  usePolling: true,
 });
 
 // Stop if no command is set
