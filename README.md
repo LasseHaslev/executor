@@ -50,6 +50,8 @@ Add `tdd` script to projects package.json
 }
 ```
 
+Then run `npm run tdd` from your projects folder.
+
 
 ## Contributing
 Follow these steps to contribute to project.
