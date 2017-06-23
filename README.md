@@ -36,6 +36,21 @@ Now you can run the command ```npm run executor``` from command line.
 
 *If you run per project and not in a npm script the command is ```./node_modules/.bin/executor```.*
 
+### Laravel TDD
+I use this project to run Test Driven Development for my Laravel applications.
+
+Check out [this Laracasts thread](https://laracasts.com/discuss/channels/testing/laravel-mix-and-phpunit?page=1#reply-341786) for more information.
+
+Add `tdd` script to projects package.json
+```json
+{
+  "scripts": {
+    "tdd": "executor './vendor/bin/phpunit --color=always' --watch='**/*.php' --ignore='node_modules/' --ignore='vendor/'"
+  }
+}
+```
+
+
 ## Contributing
 Follow these steps to contribute to project.
 
