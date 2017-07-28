@@ -52,6 +52,19 @@ Add `tdd` script to projects package.json
 
 Then run `npm run tdd` from your projects folder.
 
+Alternatively (or in addition), you can add the script to `composer.json`.
+```json
+{
+  "scripts": {
+    "tdd": [
+      "node_modules/.bin/executor './vendor/bin/phpunit --color=always' --watch='**/*.php' --ignore='node_modules/' --ignore='vendor/'"
+    ]
+  }
+}
+```
+
+Then run `composer tdd` from your projects folder.
+
 
 ## Contributing
 Follow these steps to contribute to project.
