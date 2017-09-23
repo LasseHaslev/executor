@@ -19,8 +19,13 @@ executor "<command>"
     [--watch="**/*"]
     [--ignore=""]
 
-#example
+    -- [{Custom arguments added to the <command>}]
+
+# Example
 executor './vendor/bin/phpunit' --watch='**/*.php' --ignore='node_modules/' --ignore='vendor/'
+
+# Custom arguments
+executor './vendor/bin/phpunit' --watch='**/*.php' -- --filter="CustomTest"
 ```
 
 ### Npm
@@ -28,13 +33,15 @@ package.json
 ```json
 {
     "scripts": {
-        "executor": "executor '<command>' [options]",
+        "my-script": "executor '<command>' [options]",
     }
 }
 ```
-Now you can run the command ```npm run executor``` from command line.
+Now you can run the command ```npm run my-script``` from command line.
 
 *If you run per project and not in a npm script the command is ```./node_modules/.bin/executor```.*
+
+> Pro tip: use `npm run my-script -- --your --command-option="yey"` to add options to your command.
 
 ### Laravel TDD
 I use this project to run Test Driven Development for my Laravel applications.
@@ -52,6 +59,7 @@ Add `tdd` script to projects package.json
 
 Then run `npm run tdd` from your projects folder.
 
+> Pro tip: use `npm run tdd -- --filter="awesome_test"` to filter your phpunit tests.
 
 ## Contributing
 Follow these steps to contribute to project.
