@@ -1,10 +1,6 @@
 #!/usr/bin/env node
 
-console.log(process.argv);
 const ArgumentParser = require('argparse').ArgumentParser;
-
-
-
 const chokidar = require( 'chokidar' );
 const shelljs = require( 'shelljs' );
 
@@ -19,10 +15,10 @@ parser.addArgument( [ 'command' ], {
     help: 'Command you want to run each time.',
 } );
 
-parser.addArgument( [ '-fr', '--run-on-first' ], {
-    help: 'Should the script run one time first time run run the command.',
-    type: Boolean,
-    defaultValue: true,
+parser.addArgument( [ '-nfr', '--no-first-run' ], {
+    help: 'Prevent from running on first',
+    action: 'storeTrue',
+    nargs: 0,
 } );
 
 parser.addArgument( [ '-i', '--ignore' ], {
@@ -38,7 +34,9 @@ parser.addArgument( [ '-w', '--watch' ], {
     defaultValue: '**/*',
 } );
 
-let options = parser.parseKnownArgs()[0];
+let result = parser.parseKnownArgs();
+let options = result[0];
+let remainingArgs = result[1];
 
 var watcher = chokidar.watch(options.watch, {
   ignored: options.ignore,
@@ -48,19 +46,25 @@ var watcher = chokidar.watch(options.watch, {
 
 // Stop if no command is set
 if (!options.command) {
-    console.log('Cannot watch and run command:');
-    console.log('No command provided');
+    console.error('No command provided');
     process.exit();
 };
 
 var runCommand = function( triggered ) {
     var triggeredString = triggered ? 'Triggered by "' + triggered + '".' : '';
-    console.log('');
-    console.log( 'Running command "' + options.command + '". ' + triggeredString );
-    shelljs.exec( options.command );
+
+    var fullCommand = options.command + ' ' + remainingArgs.join( ' ' );
+
+    console.log();
+    console.log();
+    console.log( 'Running command "' + fullCommand + '". ' + triggeredString );
+    console.log();
+
+
+    shelljs.exec( fullCommand );
 }
 
-if (options['run-on-first']) {
+if ( ! options.no_first_run) {
     runCommand();
 }
 
