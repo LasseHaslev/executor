@@ -22,10 +22,10 @@ executor "<command>"
     -- [{Custom arguments added to the <command>}]
 
 # Example
-executor './vendor/bin/phpunit' --watch='**/*.php' --ignore='/node_modules|\.git|vendor/'
+executor './vendor/bin/phpunit --color=always' --watch='**/*.php' --ignore='/node_modules|\.git|vendor/'
 
 # Custom arguments
-executor './vendor/bin/phpunit' --watch='**/*.php' -- --filter="CustomTest"
+executor './vendor/bin/phpunit --color=always' --watch='**/*.php' -- --filter="CustomTest"
 ```
 
 ### Npm
