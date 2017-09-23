@@ -24,7 +24,6 @@ parser.addArgument( [ '-nfr', '--no-first-run' ], {
 parser.addArgument( [ '-i', '--ignore' ], {
     help: 'What files should be ignored',
     type: String,
-    multiple: true,
     defaultValue: /(^|[\/\\])\../,
 } );
 

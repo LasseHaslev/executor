@@ -22,7 +22,7 @@ executor "<command>"
     -- [{Custom arguments added to the <command>}]
 
 # Example
-executor './vendor/bin/phpunit' --watch='**/*.php' --ignore='node_modules/' --ignore='vendor/'
+executor './vendor/bin/phpunit' --watch='**/*.php' --ignore='/node_modules|\.git|vendor/'
 
 # Custom arguments
 executor './vendor/bin/phpunit' --watch='**/*.php' -- --filter="CustomTest"
