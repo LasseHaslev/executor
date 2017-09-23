@@ -7,7 +7,8 @@
     "build": "babel src -d dist",
     "dev": "babel src -d dist --watch",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "try": "./src/app.js 'ls' --watch='**/*.js' --ignore='node_modules/'"
   },
   "repository": {
     "type": "git",
@@ -34,8 +35,9 @@
     "babel-preset-env": "^1.4.0"
   },
   "dependencies": {
+    "argparse": "^1.0.9",
+    "chokidar": "^1.7.0",
     "command-line-args": "^4.0.4",
-    "shelljs": "^0.7.7",
-    "chokidar": "^1.7.0"
+    "shelljs": "^0.7.7"
   }
 }

@@ -1,32 +1,45 @@
 #!/usr/bin/env node
 
-import argumentor from 'command-line-args';
-import chokidar from 'chokidar';
-import shelljs from 'shelljs';
+console.log(process.argv);
+const ArgumentParser = require('argparse').ArgumentParser;
 
-var options = argumentor( [
-    {
-        name: 'command',
-        type: String,
-        defaultOption: true 
-    },
-    {
-        name: 'run-on-first',
-        type: Boolean,
-        defaultValue: true,
-    },
-    {
-        name: 'ignore',
-        type: String,
-        multiple: true,
-        defaultValue: /(^|[\/\\])\../,
-    },
-    {
-        name: 'watch',
-        type: String,
-        defaultValue: '**/*',
-    },
-] );
+
+
+const chokidar = require( 'chokidar' );
+const shelljs = require( 'shelljs' );
+
+var parser = new ArgumentParser({
+    version: '0.0.1',
+    addHelp:true,
+    description: 'Argparse example'
+})
+
+// parser.addArgument( [ '-c', '--command' ], {
+parser.addArgument( [ 'command' ], {
+    help: 'Command you want to run each time.',
+} );
+
+parser.addArgument( [ '-fr', '--run-on-first' ], {
+    help: 'Should the script run one time first time run run the command.',
+    type: Boolean,
+    defaultValue: true,
+} );
+
+parser.addArgument( [ '-i', '--ignore' ], {
+    help: 'What files should be ignored',
+    type: String,
+    multiple: true,
+    defaultValue: /(^|[\/\\])\../,
+} );
+
+parser.addArgument( [ '-w', '--watch' ], {
+    help: 'Which files should be watched.',
+    type: String,
+    defaultValue: '**/*',
+} );
+
+let options = parser.parseKnownArgs()[0];
+
 var watcher = chokidar.watch(options.watch, {
   ignored: options.ignore,
   persistent: true,
@@ -42,6 +55,7 @@ if (!options.command) {
 
 var runCommand = function( triggered ) {
     var triggeredString = triggered ? 'Triggered by "' + triggered + '".' : '';
+    console.log('');
     console.log( 'Running command "' + options.command + '". ' + triggeredString );
     shelljs.exec( options.command );
 }
